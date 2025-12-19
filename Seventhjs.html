@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dami Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin-top: 50px;
+    }
+    .calculator {
+      display: inline-block;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #display {
+      width: 220px;
+      height: 40px;
+      font-size: 20px;
+      text-align: right;
+      margin-bottom: 15px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      padding-right: 10px;
+    }
+    button {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #4facfe;
+      color: white;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #00c6ff;
+    }
+    .operator {
+      background: #ff6b6b;
+    }
+    .operator:hover {
+      background: #ff4757;
+    }
+    .equal {
+      background: #1dd1a1;
+      width: 110px;
+    }
+    .equal:hover {
+      background: #10ac84;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔥 Dami Calculator 🔥</h2>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="clearDisplay()">C</button>
+    <button class="operator" onclick="appendValue('/')">÷</button>
+    <button class="operator" onclick="appendValue('*')">×</button>
+    <button class="operator" onclick="appendValue('-')">−</button>
+    <br>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button class="operator" onclick="appendValue('+')">+</button>
+    <br>
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button onclick="appendValue('.')">.</button>
+    <br>
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button onclick="appendValue('0')">0</button>
+    <br>
+    <button class="equal" onclick="calculate()">=</button>
+  </div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById("display").value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+    }
+
+    function calculate() {
+      let expression = document.getElementById("display").value;
+      try {
+        let result = eval(expression);
+        document.getElementById("display").value = result;
+      } catch (error) {
+        document.getElementById("display").value = "Error!";
+      }
+    }
+  </script>
+</body>
+</html>
